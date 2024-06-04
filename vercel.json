@@ -7,11 +7,7 @@
       "config": {
         "maxLambdaSize": "15mb",
         "runtime": "python3.12"
-      },
-      "install": [
-        "apt-get update && apt-get install -y libpq-dev",
-        "pip install --disable-pip-version-check -r requirements.txt"
-      ]
+      }
     },
     {
       "src": "CollegeERP/wsgi.py",

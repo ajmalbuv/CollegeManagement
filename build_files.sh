@@ -2,6 +2,7 @@
 
 # Build the project
 echo "Building the project..."
+apt-get update && apt-get install -y libpq-dev
 /usr/local/bin/pip3 install -r requirements.txt
 echo "Make Migration..."
 python3 manage.py makemigrations --noinput
