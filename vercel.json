@@ -3,9 +3,10 @@
   "builds": [
     {
       "src": "build_files.sh",
-      "use": "@ardnt/vercel-python-wsgi",
+      "use": "@vercel/python",
       "config": {
-        "maxLambdaSize": "15mb"
+        "maxLambdaSize": "15mb",
+        "runtime": "python3.12"
       }
     },
     {
