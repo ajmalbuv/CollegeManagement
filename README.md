@@ -1,6 +1,7 @@
-# Cloned From **https://github.com/samarth-p/College-ERP**
+# Cloned From \*\*https://github.com/samarth-p/College-ERP
 
 # College-ERP
+
 A college management system built using Django framework. It is designed for interactions between students and teachers. Features include attendance, marks and time table.
 
 ## Installation
@@ -21,15 +22,14 @@ python manage.py runserver
 
 Then go to the browser and enter the url **http://127.0.0.1:8000/**
 
-
 ## Login
 
 The login page is common for students and teachers.  
-The username is their name and password for everyone is 'project123'.  
+The username is their name and password for everyone is 'project123'.
 
 Example usernames:  
 student- 'samarth'  
-teacher- 'trisila'  
+teacher- 'trisila'
 
 You can access the django admin page at **http://127.0.0.1:8000/admin** and login with username 'admin' and the above password.
 
@@ -41,7 +41,7 @@ python manage.py createsuperuser
 
 ## Users
 
-New students and teachers can be added through the admin page. A new user needs to be created for each. 
+New students and teachers can be added through the admin page. A new user needs to be created for each.
 
 The admin page is used to modify all tables such as Students, Teachers, Departments, Courses, Classes etc.
 
@@ -57,7 +57,7 @@ This is present in Django Admin -> Attendance (http://127.0.0.1:8000/admin/info/
 Start Date: Start Date of Attendance period  
 End Date: End Date of Attendance period
 
-This will delete all present attendance data and create new attendance objects for the given time range. 
+This will delete all present attendance data and create new attendance objects for the given time range.
 
 ## Screenshots
 
