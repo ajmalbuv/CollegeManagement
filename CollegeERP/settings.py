@@ -13,7 +13,7 @@ SECRET_KEY = 'jy8c-n9y=pf##!2^jae-l_5iafq6q%wfq8gdb6c0r5d52su+9y'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.vercel.app']
 
 AUTH_USER_MODEL = 'info.User'
 
@@ -69,10 +69,20 @@ WSGI_APPLICATION = 'CollegeERP.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'collegeerp',
+        'USER': 'postgres',
+        'PASSWORD': 'sudo',
+        'HOST': '68.233.110.134',
+        'PORT': '5432',
     }
 }
 
@@ -114,6 +124,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+# STATICFILES_DIRS = [BASE_DIR/'static']
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+
 
 LOGIN_REDIRECT_URL = '/'
 
