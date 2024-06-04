@@ -5,13 +5,18 @@
       "src": "build_files.sh",
       "use": "@vercel/python",
       "config": {
-        "distDir": "staticfiles_build"
+        "distDir": "staticfiles_build",
+        "runtime": "python3.12"
       }
     },
     {
       "src": "CollegeERP/wsgi.py",
       "use": "@vercel/python",
-      "config": { "maxLambdaSize": "15mb", "runtime": "python3.12" }
+      "config": { "maxLambdaSize": "15mb", "runtime": "python3.12" },
+      "install": [
+        "apt-get update && apt-get install -y libpq-dev",
+        "pip install --disable-pip-version-check -r requirements.txt"
+      ]
     }
   ],
   "routes": [
