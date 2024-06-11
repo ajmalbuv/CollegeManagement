@@ -130,7 +130,8 @@ class Assign(models.Model):
 
 class AssignTime(models.Model):
     assign = models.ForeignKey(Assign, on_delete=models.CASCADE)
-    period = models.CharField(max_length=50, choices=time_slots, default='11:00 - 11:50')
+    period = models.CharField(
+        max_length=50, choices=time_slots, default='11:00 - 11:50')
     day = models.CharField(max_length=15, choices=DAYS_OF_WEEK)
 
 
@@ -147,7 +148,8 @@ class AttendanceClass(models.Model):
 class Attendance(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
-    attendanceclass = models.ForeignKey(AttendanceClass, on_delete=models.CASCADE, default=1)
+    attendanceclass = models.ForeignKey(
+        AttendanceClass, on_delete=models.CASCADE, default=1)
     date = models.DateField(default='2018-10-23')
     status = models.BooleanField(default='True')
 
@@ -168,22 +170,26 @@ class AttendanceTotal(models.Model):
     def att_class(self):
         stud = Student.objects.get(name=self.student)
         cr = Course.objects.get(name=self.course)
-        att_class = Attendance.objects.filter(course=cr, student=stud, status='True').count()
+        att_class = Attendance.objects.filter(
+            course=cr, student=stud, status='True').count()
         return att_class
 
     @property
     def total_class(self):
         stud = Student.objects.get(name=self.student)
         cr = Course.objects.get(name=self.course)
-        total_class = Attendance.objects.filter(course=cr, student=stud).count()
+        total_class = Attendance.objects.filter(
+            course=cr, student=stud).count()
         return total_class
 
     @property
     def attendance(self):
         stud = Student.objects.get(name=self.student)
         cr = Course.objects.get(name=self.course)
-        total_class = Attendance.objects.filter(course=cr, student=stud).count()
-        att_class = Attendance.objects.filter(course=cr, student=stud, status='True').count()
+        total_class = Attendance.objects.filter(
+            course=cr, student=stud).count()
+        att_class = Attendance.objects.filter(
+            course=cr, student=stud, status='True').count()
         if total_class == 0:
             attendance = 0
         else:
@@ -194,8 +200,10 @@ class AttendanceTotal(models.Model):
     def classes_to_attend(self):
         stud = Student.objects.get(name=self.student)
         cr = Course.objects.get(name=self.course)
-        total_class = Attendance.objects.filter(course=cr, student=stud).count()
-        att_class = Attendance.objects.filter(course=cr, student=stud, status='True').count()
+        total_class = Attendance.objects.filter(
+            course=cr, student=stud).count()
+        att_class = Attendance.objects.filter(
+            course=cr, student=stud, status='True').count()
         cta = math.ceil((0.75 * total_class - att_class) / 0.25)
         if cta < 0:
             return 0
@@ -224,14 +232,17 @@ class StudentCourse(models.Model):
         return cie
 
     def get_attendance(self):
-        a = AttendanceTotal.objects.get(student=self.student, course=self.course)
+        a = AttendanceTotal.objects.get(
+            student=self.student, course=self.course)
         return a.attendance
 
 
 class Marks(models.Model):
     studentcourse = models.ForeignKey(StudentCourse, on_delete=models.CASCADE)
-    name = models.CharField(max_length=50, choices=test_name, default='Internal test 1')
-    marks1 = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(100)])
+    name = models.CharField(
+        max_length=50, choices=test_name, default='Internal test 1')
+    marks1 = models.IntegerField(default=0, validators=[
+                                 MinValueValidator(0), MaxValueValidator(100)])
 
     class Meta:
         unique_together = (('studentcourse', 'name'),)
@@ -245,7 +256,8 @@ class Marks(models.Model):
 
 class MarksClass(models.Model):
     assign = models.ForeignKey(Assign, on_delete=models.CASCADE)
-    name = models.CharField(max_length=50, choices=test_name, default='Internal test 1')
+    name = models.CharField(
+        max_length=50, choices=test_name, default='Internal test 1')
     status = models.BooleanField(default='False')
 
     class Meta:
@@ -288,9 +300,11 @@ def create_attendance(sender, instance, **kwargs):
         for single_date in daterange(start_date, end_date):
             if single_date.isoweekday() == days[instance.day]:
                 try:
-                    AttendanceClass.objects.get(date=single_date.strftime("%Y-%m-%d"), assign=instance.assign)
+                    AttendanceClass.objects.get(date=single_date.strftime(
+                        "%Y-%m-%d"), assign=instance.assign)
                 except AttendanceClass.DoesNotExist:
-                    a = AttendanceClass(date=single_date.strftime("%Y-%m-%d"), assign=instance.assign)
+                    a = AttendanceClass(date=single_date.strftime(
+                        "%Y-%m-%d"), assign=instance.assign)
                     a.save()
 
 
@@ -300,7 +314,8 @@ def create_marks(sender, instance, **kwargs):
             ass_list = instance.class_id.assign_set.all()
             for ass in ass_list:
                 try:
-                    StudentCourse.objects.get(student=instance, course=ass.course)
+                    StudentCourse.objects.get(
+                        student=instance, course=ass.course)
                 except StudentCourse.DoesNotExist:
                     sc = StudentCourse(student=instance, course=ass.course)
                     sc.save()
@@ -339,7 +354,8 @@ def create_marks_class(sender, instance, **kwargs):
 
 def delete_marks(sender, instance, **kwargs):
     stud_list = instance.class_id.student_set.all()
-    StudentCourse.objects.filter(course=instance.course, student__in=stud_list).delete()
+    StudentCourse.objects.filter(
+        course=instance.course, student__in=stud_list).delete()
 
 
 post_save.connect(create_marks, sender=Student)

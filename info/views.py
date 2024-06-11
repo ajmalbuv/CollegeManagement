@@ -43,7 +43,8 @@ def attendance(request, stud_id):
 def attendance_detail(request, stud_id, course_id):
     stud = get_object_or_404(Student, USN=stud_id)
     cr = get_object_or_404(Course, id=course_id)
-    att_list = Attendance.objects.filter(course=cr, student=stud).order_by('date')
+    att_list = Attendance.objects.filter(
+        course=cr, student=stud).order_by('date')
     return render(request, 'info/att_detail.html', {'att_list': att_list, 'cr': cr})
 
 
@@ -124,14 +125,17 @@ def confirm(request, ass_c_id):
             status = 'False'
         if assc.status == 1:
             try:
-                a = Attendance.objects.get(course=cr, student=s, date=assc.date, attendanceclass=assc)
+                a = Attendance.objects.get(
+                    course=cr, student=s, date=assc.date, attendanceclass=assc)
                 a.status = status
                 a.save()
             except Attendance.DoesNotExist:
-                a = Attendance(course=cr, student=s, status=status, date=assc.date, attendanceclass=assc)
+                a = Attendance(course=cr, student=s, status=status,
+                               date=assc.date, attendanceclass=assc)
                 a.save()
         else:
-            a = Attendance(course=cr, student=s, status=status, date=assc.date, attendanceclass=assc)
+            a = Attendance(course=cr, student=s, status=status,
+                           date=assc.date, attendanceclass=assc)
             a.save()
             assc.status = 1
             assc.save()
@@ -143,7 +147,8 @@ def confirm(request, ass_c_id):
 def t_attendance_detail(request, stud_id, course_id):
     stud = get_object_or_404(Student, USN=stud_id)
     cr = get_object_or_404(Course, id=course_id)
-    att_list = Attendance.objects.filter(course=cr, student=stud).order_by('date')
+    att_list = Attendance.objects.filter(
+        course=cr, student=stud).order_by('date')
     return render(request, 'info/t_att_detail.html', {'att_list': att_list, 'cr': cr})
 
 
@@ -181,7 +186,8 @@ def e_confirm(request, assign_id):
         else:
             status = 'False'
         date = request.POST['date']
-        a = Attendance(course=cr, student=s, status=status, date=date, attendanceclass=assc)
+        a = Attendance(course=cr, student=s, status=status,
+                       date=date, attendanceclass=assc)
         a.save()
 
     return HttpResponseRedirect(reverse('t_clas', args=(ass.teacher_id, 1)))
@@ -250,7 +256,8 @@ def t_timetable(request, teacher_id):
 def free_teachers(request, asst_id):
     asst = get_object_or_404(AssignTime, id=asst_id)
     ft_list = []
-    t_list = Teacher.objects.filter(assign__class_id__id=asst.assign.class_id_id)
+    t_list = Teacher.objects.filter(
+        assign__class_id__id=asst.assign.class_id_id)
     for t in t_list:
         at_list = AssignTime.objects.filter(assign__teacher=t)
         if not any([True if at.period == asst.period and at.day == asst.day else False for at in at_list]):
@@ -345,7 +352,8 @@ def edit_marks(request, marks_c_id):
 @login_required()
 def student_marks(request, assign_id):
     ass = Assign.objects.get(id=assign_id)
-    sc_list = StudentCourse.objects.filter(student__in=ass.class_id.student_set.all(), course=ass.course)
+    sc_list = StudentCourse.objects.filter(
+        student__in=ass.class_id.student_set.all(), course=ass.course)
     return render(request, 'info/t_student_marks.html', {'sc_list': sc_list})
 
 
@@ -360,13 +368,14 @@ def add_teacher(request):
         id = request.POST['id'].lower()
         dob = request.POST['dob']
         sex = request.POST['sex']
-        
+
         # Creating a User with teacher username and password format
         # USERNAME: firstname + underscore + unique ID
         # PASSWORD: firstname + underscore + year of birth(YYYY)
         user = User.objects.create_user(
             username=name.split(" ")[0].lower() + '_' + id,
-            password=name.split(" ")[0].lower() + '_' + dob.replace("-","")[:4]
+            password=name.split(" ")[0].lower() +
+            '_' + dob.replace("-", "")[:4]
         )
         user.save()
 
@@ -379,7 +388,7 @@ def add_teacher(request):
             DOB=dob
         ).save()
         return redirect('/')
-    
+
     all_dept = Dept.objects.order_by('-id')
     context = {'all_dept': all_dept}
 
@@ -398,14 +407,16 @@ def add_student(request):
         name = request.POST['full_name']
         usn = request.POST['usn']
         dob = request.POST['dob']
-        sex = request.POST['sex'] 
+        sex = request.POST['sex']
 
         # Creating a User with student username and password format
         # USERNAME: firstname + underscore + last 3 digits of USN
         # PASSWORD: firstname + underscore + year of birth(YYYY)
         user = User.objects.create_user(
-            username=name.split(" ")[0].lower() + '_' + request.POST['usn'][-3:],
-            password=name.split(" ")[0].lower() + '_' + dob.replace("-","")[:4]
+            username=name.split(" ")[0].lower() + '_' +
+            request.POST['usn'][-3:],
+            password=name.split(" ")[0].lower() +
+            '_' + dob.replace("-", "")[:4]
         )
         user.save()
 
@@ -419,7 +430,7 @@ def add_student(request):
             DOB=dob
         ).save()
         return redirect('/')
-    
+
     all_classes = Class.objects.order_by('-id')
     context = {'all_classes': all_classes}
     return render(request, 'info/add_student.html', context)
