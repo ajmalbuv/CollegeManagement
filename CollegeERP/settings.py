@@ -1,7 +1,10 @@
 import os
+import dj_database_url
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+load_dotenv()
 
 
 # Quick-start development settings - unsuitable for production
@@ -76,15 +79,23 @@ WSGI_APPLICATION = 'CollegeERP.wsgi.application'
 #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'collegeerp',
+#         'USER': 'postgres',
+#         'PASSWORD': 'sudo',
+#         'HOST': '68.233.110.134',
+#         'PORT': '5432',
+#     }
+# }
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'collegeerp',
-        'USER': 'postgres',
-        'PASSWORD': 'sudo',
-        'HOST': '68.233.110.134',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.config(
+        default=os.environ.get('POSTGRES_URL'),
+        conn_max_age=600,
+        conn_health_checks=True,
+        ssl_require=True,
+    )
 }
 
 
