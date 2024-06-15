@@ -150,7 +150,7 @@ class Attendance(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     attendanceclass = models.ForeignKey(
         AttendanceClass, on_delete=models.CASCADE, default=1)
-    date = models.DateField(default='2018-10-23')
+    date = models.DateField(default='2024-05-01')
     status = models.BooleanField(default='True')
 
     def __str__(self):
