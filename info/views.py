@@ -245,7 +245,7 @@ def t_timetable(request, teacher_id):
             except AssignTime.DoesNotExist:
                 pass
             t += 1
-
+    print(j)
     context = {
         'class_matrix': class_matrix,
     }
