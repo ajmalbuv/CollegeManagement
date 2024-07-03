@@ -117,3 +117,10 @@ media/
 # **/migrations/**
 # !**/migrations
 # !**/migrations/__init__.py
+# Visual Studio Code # 
+.vscode/* 
+!.vscode/settings.json 
+!.vscode/tasks.json 
+!.vscode/launch.json 
+!.vscode/extensions.json 
+.history
