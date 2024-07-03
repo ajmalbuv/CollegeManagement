@@ -60,3 +60,4 @@ urlpatterns = [
 ]
 admin.site.site_url = None
 admin.site.site_header = 'Admin Page'
+admin.site.site_title = 'College Management'
