@@ -35,7 +35,8 @@ INSTALLED_APPS = [
     'djoser',
     'rest_framework.authtoken',
     'apis',
-    'django_extensions'
+    'django_extensions',
+    'fontawesomefree'
 
 ]
 
