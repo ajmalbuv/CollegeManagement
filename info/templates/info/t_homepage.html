@@ -234,11 +234,15 @@
             >
               Cancel
             </button>
-            <a class="btn btn-primary" href="/accounts/login">Logout</a>
+            <form action="{% url 'logout' %}" method="post">
+              {% csrf_token %}
+              <button class="btn btn-primary" type="submit">Logout</button>
+            </form>
           </div>
         </div>
       </div>
     </div>
+
 
     <!-- Bootstrap core JavaScript -->
 
