@@ -17,3 +17,12 @@ body {
 .card {
   height: 100%;
 }
+
+.wid600 {
+  min-width: 600px;
+}
+
+.hiwi {
+  width: 312px;
+  height: 250px;
+}
