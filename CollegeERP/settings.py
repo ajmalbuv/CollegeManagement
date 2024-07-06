@@ -80,10 +80,10 @@ WSGI_APPLICATION = 'CollegeERP.wsgi.application'
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'collegeerp',
-#         'USER': 'postgres',
+#         'NAME': 'collegemanagement',
+#         'USER': 'ajmalbuv',
 #         'PASSWORD': 'sudo',
-#         'HOST': '68.233.110.134',
+#         'HOST': '144.24.152.79',
 #         'PORT': '5432',
 #     }
 # }
