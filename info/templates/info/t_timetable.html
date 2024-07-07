@@ -41,7 +41,14 @@
                   <a href="{% url 'free_teachers' j.id %}">{{ j.assign.class_id_id }} {{ j.assign.course.shortname
                     }}</a>
                           {% endcomment %}
-                          <a>{{ j.assign.class_id_id }} {{ j.assign.course.shortname }}</a>
+                          {% comment %} {{ j.assign.class_id_id }} {{ j.assign.course.shortname }} {% endcomment %}
+                          {% if j.assign.class_id_id and j.assign.course.shortname %}
+                            {{ j.assign.class_id_id }}-{{ j.assign.course.shortname }}
+                          {% elif j.assign.class_id_id %}
+                            {{ j.assign.class_id_id }}
+                          {% elif j.assign.course.shortname %}
+                            {{ j.assign.course.shortname }}
+                          {% endif %}
                         </td>
                         {% comment %}
                         <td>

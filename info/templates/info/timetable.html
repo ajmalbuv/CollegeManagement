@@ -30,7 +30,15 @@
                                                 <b>{{ j }}</b>
                                             </td>
                                         {% else %}
-                                            <td>{{ j.assign.course.shortname }}</td>
+                                            <td>
+                                                {% if j.assign.course_id and j.assign.course.shortname %}
+                                                    {{ j.assign.course_id }}-{{ j.assign.course.shortname }}
+                                                {% elif j.assign.course_id %}
+                                                    {{ j.assign.course_id }}
+                                                {% elif j.assign.course.shortname %}
+                                                    {{ j.assign.course.shortname }}
+                                                {% endif %}
+                                            </td>
                                         {% endif %}
                                     {% endfor %}
                                 </tr>
