@@ -34,7 +34,3 @@ body {
   flex-direction: column;
   justify-content: center;
 }
-
-.table th {
-  width: 25%;
-}
