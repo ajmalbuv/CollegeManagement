@@ -61,7 +61,6 @@
           similique quaerat nam nobis illo aspernatur vitae fugiat numquam
           repellat.
         </p>
-        #} {# <a href="#" class="btn btn-primary btn-lg">Call to action!</a>#}
         {% endcomment %}
       </header>
       <!-- Page Features -->
@@ -71,7 +70,7 @@
             <a href="{% url 'attendance' request.user.student.USN %}">
               <img class="card-img-top"
                    src="{% static 'info/images/attendance2.jpg' %}"
-                   alt="" width=328px height=328px/>
+                   alt="" width="" height=""/>
             </a>
             <div class="card-body">
               <h4 class="card-title">Attendance</h4>
@@ -93,7 +92,7 @@
             <a href="{% url 'marks_list' request.user.student.USN %}">
               <img class="card-img-top"
                    src="{% static 'info/images/marks.jpg' %}"
-                   alt="" width=328 height=328/>
+                   alt="" width="" height=""/>
             </a>
             <div class="card-body">
               <h4 class="card-title">Marks</h4>
@@ -115,7 +114,7 @@
             <a href="{% url 'timetable' request.user.student.class_id_id %}">
               <img class="card-img-top"
                    src="{% static 'info/images/timetable.png' %}"
-                   alt="" width=328 height=328/>
+                   alt="" width="" height=""/>
             </a>
             <div class="card-body">
               <h4 class="card-title">TimeTable</h4>
