@@ -280,22 +280,22 @@ def t_timetable(request, teacher_id):
     return render(request, "info/t_timetable.html", context)
 
 
-@login_required()
-def free_teachers(request, asst_id):
-    asst = get_object_or_404(AssignTime, id=asst_id)
-    ft_list = []
-    t_list = Teacher.objects.filter(assign__class_id__id=asst.assign.class_id_id)
-    for t in t_list:
-        at_list = AssignTime.objects.filter(assign__teacher=t)
-        if not any(
-            [
-                True if at.period == asst.period and at.day == asst.day else False
-                for at in at_list
-            ]
-        ):
-            ft_list.append(t)
+# @login_required()
+# def free_teachers(request, asst_id):
+#     asst = get_object_or_404(AssignTime, id=asst_id)
+#     ft_list = []
+#     t_list = Teacher.objects.filter(assign__class_id__id=asst.assign.class_id_id)
+#     for t in t_list:
+#         at_list = AssignTime.objects.filter(assign__teacher=t)
+#         if not any(
+#             [
+#                 True if at.period == asst.period and at.day == asst.day else False
+#                 for at in at_list
+#             ]
+#         ):
+#             ft_list.append(t)
 
-    return render(request, "info/free_teachers.html", {"ft_list": ft_list})
+#     return render(request, "info/free_teachers.html", {"ft_list": ft_list})
 
 
 # student marks
@@ -316,9 +316,8 @@ def marks_list(request, stud_id):
             sc.save()
             sc.marks_set.create(type="I", name="Internal test 1")
             sc.marks_set.create(type="I", name="Internal test 2")
-            sc.marks_set.create(type="I", name="Internal test 3")
-            sc.marks_set.create(type="E", name="Event 1")
-            sc.marks_set.create(type="E", name="Event 2")
+            sc.marks_set.create(type="E", name="Assignment 1")
+            sc.marks_set.create(type="E", name="Assignment 2")
             sc.marks_set.create(type="S", name="Semester End Exam")
         sc_list.append(sc)
 

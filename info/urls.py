@@ -51,11 +51,11 @@ urlpatterns = [
     path(
         "teacher/<slug:teacher_id>/t_timetable/", views.t_timetable, name="t_timetable"
     ),
-    path(
-        "teacher/<int:asst_id>/Free_teachers/",
-        views.free_teachers,
-        name="free_teachers",
-    ),
+    # path(
+    #     "teacher/<int:asst_id>/Free_teachers/",
+    #     views.free_teachers,
+    #     name="free_teachers",
+    # ),
     path(
         "teacher/<int:assign_id>/marks_list/", views.t_marks_list, name="t_marks_list"
     ),

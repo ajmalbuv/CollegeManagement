@@ -29,9 +29,8 @@ DAYS_OF_WEEK = (
 test_name = (
     ("Internal test 1", "Internal test 1"),
     ("Internal test 2", "Internal test 2"),
-    ("Internal test 3", "Internal test 3"),
-    ("Event 1", "Event 1"),
-    ("Event 2", "Event 2"),
+    ("Assignment 1", "Assignment 1"),
+    ("Assignment 2", "Assignment 2"),
     ("Semester End Exam", "Semester End Exam"),
 )
 
@@ -101,7 +100,7 @@ class Teacher(models.Model):
     dept = models.ForeignKey(Dept, on_delete=models.CASCADE, default=1)
     name = models.CharField(max_length=100)
     sex = models.CharField(max_length=50, choices=sex_choice, default="Male")
-    DOB = models.DateField(default="1980-01-01")
+    DOB = models.DateField(default="2001-01-01")
 
     def __str__(self):
         return self.name
@@ -125,7 +124,7 @@ class Assign(models.Model):
 class AssignTime(models.Model):
     assign = models.ForeignKey(Assign, on_delete=models.CASCADE)
     period = models.CharField(
-        max_length=50, choices=time_slots, default="11:00 - 11:50"
+        max_length=50, choices=time_slots, default="11:10 - 12:10"
     )
     day = models.CharField(max_length=15, choices=DAYS_OF_WEEK)
 
@@ -224,7 +223,7 @@ class StudentCourse(models.Model):
         m = []
         for mk in marks_list:
             m.append(mk.marks1)
-        cie = math.ceil(sum(m[:5]) / 2)
+        cie = math.ceil(sum(m[:4]) / 3)
         return cie
 
     def get_attendance(self):
@@ -245,8 +244,12 @@ class Marks(models.Model):
     @property
     def total_marks(self):
         if self.name == "Semester End Exam":
-            return 100
-        return 20
+            return 60
+        elif self.name == "Assignment 1":
+            return 20
+        elif self.name == "Assignment 2":
+            return 20
+        return 40
 
 
 class MarksClass(models.Model):
@@ -260,8 +263,12 @@ class MarksClass(models.Model):
     @property
     def total_marks(self):
         if self.name == "Semester End Exam":
-            return 100
-        return 20
+            return 60
+        elif self.name == "Assignment 1":
+            return 20
+        elif self.name == "Assignment 2":
+            return 20
+        return 40
 
 
 class AttendanceRange(models.Model):
@@ -316,9 +323,8 @@ def create_marks(sender, instance, **kwargs):
                     sc.save()
                     sc.marks_set.create(name="Internal test 1")
                     sc.marks_set.create(name="Internal test 2")
-                    sc.marks_set.create(name="Internal test 3")
-                    sc.marks_set.create(name="Event 1")
-                    sc.marks_set.create(name="Event 2")
+                    sc.marks_set.create(name="Assignment 1")
+                    sc.marks_set.create(name="Assignment 2")
                     sc.marks_set.create(name="Semester End Exam")
         elif hasattr(instance, "course"):
             stud_list = instance.class_id.student_set.all()
@@ -331,9 +337,8 @@ def create_marks(sender, instance, **kwargs):
                     sc.save()
                     sc.marks_set.create(name="Internal test 1")
                     sc.marks_set.create(name="Internal test 2")
-                    sc.marks_set.create(name="Internal test 3")
-                    sc.marks_set.create(name="Event 1")
-                    sc.marks_set.create(name="Event 2")
+                    sc.marks_set.create(name="Assignment 1")
+                    sc.marks_set.create(name="Assignment 2")
                     sc.marks_set.create(name="Semester End Exam")
 
 
