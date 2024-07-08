@@ -6,10 +6,6 @@ from dotenv import load_dotenv
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 load_dotenv()
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
@@ -35,8 +31,7 @@ INSTALLED_APPS = [
     'djoser',
     'rest_framework.authtoken',
     'apis',
-    'django_extensions'
-
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -49,7 +44,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'CollegeERP.urls'
+ROOT_URLCONF = 'CollegeManagement.urls'
 
 TEMPLATES = [
     {
@@ -67,7 +62,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'CollegeERP.wsgi.application'
+WSGI_APPLICATION = 'CollegeManagement.wsgi.application'
 
 
 
