@@ -24,7 +24,6 @@ AUTH_USER_MODEL = 'info.User'
 # Application definition
 
 INSTALLED_APPS = [
-    'jazzmin',
     'info.apps.InfoConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,6 +36,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'apis',
     'django_extensions'
+
 ]
 
 MIDDLEWARE = [
