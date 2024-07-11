@@ -12,7 +12,8 @@ pip install django
 
 ## Usage
 
-Go to the College-ERP folder and run
+Go to the College-ERP folder and add a Postgres url in .env or uncomment the sqlite database lines for local db.
+then Run server
 
 ```bash
 python manage.py runserver
@@ -26,7 +27,7 @@ The login page is common for students and teachers.
 The username is their name and password for everyone is 'project123'.
 
 Example usernames:  
-student- 'abhijith'  
+student- 'U19CU21S0002'  
 teacher- 'veena'
 
 You can access the django admin page at **http://127.0.0.1:8000/admin** and login with username 'admin' and the above password.
@@ -45,7 +46,7 @@ The admin page is used to modify all tables such as Students, Teachers, Departme
 
 **For more details regarding the system and features please refer the reports included.**
 
-## Update (29/11/2020)
+## Update (11/07/2024)
 
 Added method to reset attendance time range in Django Admin page.
 
