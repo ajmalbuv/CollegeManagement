@@ -95,6 +95,7 @@ ENV/
 
 # Pycharm project setting
 .idea
+qodana.yaml
 
 # Rope project settings
 .ropeproject

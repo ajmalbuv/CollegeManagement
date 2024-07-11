@@ -1,5 +1,4 @@
 from datetime import timedelta, datetime
-
 from django.contrib import admin
 from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin
@@ -135,8 +134,10 @@ class AttendanceClassAdmin(admin.ModelAdmin):
 
     def reset_attd(self, request):
 
-        start_date = datetime.strptime(request.POST["startdate"], "%Y-%m-%d").date()
-        end_date = datetime.strptime(request.POST["enddate"], "%Y-%m-%d").date()
+        start_date = datetime.strptime(
+            request.POST["startdate"], "%Y-%m-%d").date()
+        end_date = datetime.strptime(
+            request.POST["enddate"], "%Y-%m-%d").date()
 
         try:
             a = AttendanceRange.objects.all()[:1].get()
