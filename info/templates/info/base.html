@@ -74,12 +74,12 @@
                             <span>Attendance</span>
                         </a>
                     </li>
+                    {% comment %}
                     <li class="nav-item">
-                        <a class="nav-link"
-                           href="{% url 'attendance' request.user.student.USN %}">
+                        <a class="nav-link" href="{% url 'attendance' request.user.student.USN %}">
                             <span>Attendance By Subject</span>
                         </a>
-                    </li>
+                    </li>{% endcomment %}
                     <li class="nav-item">
                         <a class="nav-link"
                            href="{% url 'marks_list' request.user.student.USN %}">
