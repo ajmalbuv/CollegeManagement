@@ -80,5 +80,6 @@ urlpatterns = [
     path("add-student/", views.add_student, name="add_student"),
 ]
 admin.site.site_url = None
-admin.site.site_header = "Admin Page"
-admin.site.site_title = "College Management"
+admin.site.site_header = "College Admin"
+admin.site.site_title = "App Name"
+admin.site.index_title = "College Administrator"
