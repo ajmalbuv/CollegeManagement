@@ -1,6 +1,7 @@
 from datetime import timedelta, datetime
 
 from django.contrib import admin
+from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin
 from django.http import HttpResponseRedirect
 from django.urls import path
@@ -174,3 +175,4 @@ admin.site.register(Teacher, TeacherAdmin)
 admin.site.register(Assign, AssignAdmin)
 admin.site.register(StudentCourse, StudentCourseAdmin)
 admin.site.register(AttendanceClass, AttendanceClassAdmin)
+admin.site.unregister(Group)
