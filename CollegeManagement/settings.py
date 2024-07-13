@@ -84,10 +84,10 @@ WSGI_APPLICATION = "CollegeManagement.wsgi.application"
 # }
 DATABASES = {
     "default": dj_database_url.config(
-        default=os.environ.get("POSTGRES_URL"),
+        default=os.environ.get("POSTGRES_URL_NO_SSL"),
         conn_max_age=600,
         conn_health_checks=True,
-        ssl_require=True,
+        ssl_require=False,
     )
 }
 
