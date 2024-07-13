@@ -146,4 +146,4 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # JAZZMIN
 
-JAZZMIN_SETTINGS = {"show_ui_builder": True}
+JAZZMIN_SETTINGS = {"show_ui_builder": True, "site_icon": "asishidea.ico"}
