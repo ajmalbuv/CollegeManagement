@@ -20,6 +20,7 @@ AUTH_USER_MODEL = "info.User"
 # Application definition
 
 INSTALLED_APPS = [
+    "jazzmin",
     "info.apps.InfoConfig",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -141,3 +142,8 @@ REST_FRAMEWORK = {
     ),
 }
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+# JAZZMIN
+
+JAZZMIN_SETTINGS = {"show_ui_builder": True}
