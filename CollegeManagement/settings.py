@@ -72,16 +72,6 @@ WSGI_APPLICATION = "CollegeManagement.wsgi.application"
 #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'collegemanagement',
-#         'USER': 'ajmalbuv',
-#         'PASSWORD': 'sudo',
-#         'HOST': '144.24.152.79',
-#         'PORT': '5432',
-#     }
-# }
 DATABASES = {
     "default": dj_database_url.config(
         default=os.environ.get("POSTGRES_URL_NO_SSL"),

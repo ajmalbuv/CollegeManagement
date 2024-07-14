@@ -11,11 +11,37 @@
     </form>
     <br>
     <script>
-    let resetAttdForm = document.querySelector('#reset-attd');
-    resetAttdForm.querySelector('input[name="startdate"], input[name="enddate"]').addEventListener('change', function (e) {
-        let startDate = e.target.value
-        resetAttdForm.action = 'reset_attd/' + startDate + '/'
-    }) 
+    document.addEventListener('DOMContentLoaded', function() {
+        let resetAttdForm = document.querySelector('#reset-attd');
+        let startDateInput = resetAttdForm.querySelector('input[name="startdate"]');
+        let endDateInput = resetAttdForm.querySelector('input[name="enddate"]');
+
+        resetAttdForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            let startDate = startDateInput.value;
+            let endDate = endDateInput.value;
+            
+            if (startDate && endDate) {
+                // Instead of changing the action, we'll submit the form programmatically
+                let formData = new FormData(resetAttdForm);
+                fetch(resetAttdForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-CSRFToken': formData.get('csrfmiddlewaretoken')
+                    }
+                }).then(response => {
+                    if (response.ok) {
+                        // Reload the page or handle success
+                        window.location.reload();
+                    } else {
+                        // Handle errors
+                        console.error('Form submission failed');
+                    }
+                });
+            }
+        });
+    });
     </script>
     {{ block.super }}
 {% endblock object-tools %}
