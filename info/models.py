@@ -3,7 +3,7 @@ import math
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.contrib.auth.models import AbstractUser
 from django.db.models.signals import post_save, post_delete
-from datetime import timedelta
+from datetime import timedelta,date
 
 # Create your models here.
 sex_choice = (("Male", "Male"), ("Female", "Female"))
@@ -296,19 +296,26 @@ days = {
 
 def create_attendance(sender, instance, **kwargs):
     if kwargs["created"]:
-        start_date = AttendanceRange.objects.all()[:1].get().start_date
-        end_date = AttendanceRange.objects.all()[:1].get().end_date
+        try:
+            attendance_range = AttendanceRange.objects.all()[:1].get()
+            start_date = attendance_range.start_date
+            end_date = attendance_range.end_date
+        except AttendanceRange.DoesNotExist:
+            # Create a default range if none exists
+            today = date.today()
+            start_date = today
+            # Default to one year from today
+            end_date = today + timedelta(weeks=20)
+            AttendanceRange.objects.create(
+                start_date=start_date, end_date=end_date)
+
         for single_date in daterange(start_date, end_date):
             if single_date.isoweekday() == days[instance.day]:
-                try:
-                    AttendanceClass.objects.get(
-                        date=single_date.strftime("%Y-%m-%d"), assign=instance.assign
-                    )
-                except AttendanceClass.DoesNotExist:
-                    a = AttendanceClass(
-                        date=single_date.strftime("%Y-%m-%d"), assign=instance.assign
-                    )
-                    a.save()
+                AttendanceClass.objects.get_or_create(
+                    date=single_date,
+                    assign=instance.assign,
+                    defaults={'status': 0}
+                )
 
 
 def create_marks(sender, instance, **kwargs):

@@ -123,6 +123,15 @@ class AttendanceClassAdmin(admin.ModelAdmin):
     list_display = ("assign", "date", "status")
     ordering = ["assign", "date"]
     change_list_template = "admin/attendance/attendance_change_list.html"
+    
+    def changelist_view(self, request, extra_context=None):
+        extra_context = extra_context or {}
+        try:
+            extra_context['current_range'] = AttendanceRange.objects.latest(
+                'id')
+        except AttendanceRange.DoesNotExist:
+            extra_context['current_range'] = None
+        return super().changelist_view(request, extra_context=extra_context)
 
     def get_urls(self):
         urls = super().get_urls()
