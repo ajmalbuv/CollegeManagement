@@ -5,15 +5,18 @@ from django.contrib import admin
 
 urlpatterns = [
     path("", views.index, name="index"),
-    path("student/<slug:stud_id>/attendance/", views.attendance, name="attendance"),
+    path("student/<slug:stud_id>/attendance/",
+         views.attendance, name="attendance"),
     path(
         "student/<slug:stud_id>/<slug:course_id>/attendance/",
         views.attendance_detail,
         name="attendance_detail",
     ),
-    path("student/<slug:class_id>/timetable/", views.timetable, name="timetable"),
+    path("student/<slug:class_id>/timetable/",
+         views.timetable, name="timetable"),
     # path('student/<slug:class_id>/search/', views.student_search, name='student_search'),
-    path("student/<slug:stud_id>/marks_list/", views.marks_list, name="marks_list"),
+    path("student/<slug:stud_id>/marks_list/",
+         views.marks_list, name="marks_list"),
     path(
         "teacher/<slug:teacher_id>/<int:choice>/Classes/", views.t_clas, name="t_clas"
     ),
@@ -25,10 +28,13 @@ urlpatterns = [
     path(
         "teacher/<int:assign_id>/ClassDates/", views.t_class_date, name="t_class_date"
     ),
-    path("teacher/<int:ass_c_id>/Cancel/", views.cancel_class, name="cancel_class"),
-    path("teacher/<int:ass_c_id>/attendance/", views.t_attendance, name="t_attendance"),
+    path("teacher/<int:ass_c_id>/Cancel/",
+         views.cancel_class, name="cancel_class"),
+    path("teacher/<int:ass_c_id>/attendance/",
+         views.t_attendance, name="t_attendance"),
     path("teacher/<int:ass_c_id>/Edit_att/", views.edit_att, name="edit_att"),
-    path("teacher/<int:ass_c_id>/attendance/confirm/", views.confirm, name="confirm"),
+    path("teacher/<int:ass_c_id>/attendance/confirm/",
+         views.confirm, name="confirm"),
     path(
         "teacher/<slug:stud_id>/<slug:course_id>/attendance/",
         views.t_attendance_detail,
@@ -69,7 +75,8 @@ urlpatterns = [
         views.marks_confirm,
         name="marks_confirm",
     ),
-    path("teacher/<int:marks_c_id>/Edit_marks/", views.edit_marks, name="edit_marks"),
+    path("teacher/<int:marks_c_id>/Edit_marks/",
+         views.edit_marks, name="edit_marks"),
     path("api/auth/", include("djoser.urls")),
     path("add-teacher/", views.add_teacher, name="add_teacher"),
     path("add-student/", views.add_student, name="add_student"),

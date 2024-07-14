@@ -58,7 +58,8 @@ def attendance(request, stud_id):
 def attendance_detail(request, stud_id, course_id):
     stud = get_object_or_404(Student, USN=stud_id)
     cr = get_object_or_404(Course, id=course_id)
-    att_list = Attendance.objects.filter(course=cr, student=stud).order_by("date")
+    att_list = Attendance.objects.filter(
+        course=cr, student=stud).order_by("date")
     return render(request, "info/att_detail.html", {"att_list": att_list, "cr": cr})
 
 
@@ -173,7 +174,8 @@ def confirm(request, ass_c_id):
 def t_attendance_detail(request, stud_id, course_id):
     stud = get_object_or_404(Student, USN=stud_id)
     cr = get_object_or_404(Course, id=course_id)
-    att_list = Attendance.objects.filter(course=cr, student=stud).order_by("date")
+    att_list = Attendance.objects.filter(
+        course=cr, student=stud).order_by("date")
     return render(request, "info/t_att_detail.html", {"att_list": att_list, "cr": cr})
 
 
@@ -278,7 +280,6 @@ def t_timetable(request, teacher_id):
         "class_matrix": class_matrix,
     }
     return render(request, "info/t_timetable.html", context)
-
 
 
 # student marks
@@ -398,7 +399,8 @@ def add_teacher(request):
         )
         user.save()
 
-        Teacher(user=user, id=id, dept=dept, name=name, sex=sex, DOB=dob).save()
+        Teacher(user=user, id=id, dept=dept,
+                name=name, sex=sex, DOB=dob).save()
         return redirect("/")
 
     all_dept = Dept.objects.order_by("-id")
