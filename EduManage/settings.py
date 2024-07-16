@@ -45,7 +45,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "CollegeManagement.urls"
+ROOT_URLCONF = "EduManage.urls"
 
 TEMPLATES = [
     {
@@ -63,7 +63,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "CollegeManagement.wsgi.application"
+WSGI_APPLICATION = "EduManage.wsgi.application"
 
 
 # DATABASES = {
@@ -136,4 +136,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # JAZZMIN
 
-JAZZMIN_SETTINGS = {"show_ui_builder": True, "site_icon": "asishidea.ico"}
+JAZZMIN_SETTINGS = {"show_ui_builder": True,
+                    "site_icon": "asishidea.ico"
+                    }
