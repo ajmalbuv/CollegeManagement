@@ -60,21 +60,21 @@ This will delete all present attendance data and create new attendance objects f
 
 ## Screenshots
 
+### Login Screen
+![Login Screen](https://imgur.com/WHXZ7hm.png)
 ### Teacher Page
 
-![alt text](https://imgur.com/pMAoEbG.png)
+![Teacher DashBoard](https://imgur.com/lhRQnnE.png)
 
-![alt text](https://imgur.com/ZiQ3RRA.png)
+![Teacher Attendance](https://imgur.com/N4VVbVR.png)
 
-![alt text](https://imgur.com/i025CJW.png)
+![Attendance Marking](https://imgur.com/9GKsdBP.png)
 
-![alt text](https://imgur.com/HQlLYmC.png)
+![Attendence View](https://imgur.com/88TThj6.png)
 
-![alt text](https://imgur.com/j6RyBmU.png)
+![Enter Marks](https://imgur.com/OmrNNU4.png)
 
-![alt text](https://imgur.com/xIKEMvQ.png)
-
-![alt text](https://imgur.com/4Rl7Fpv.png)
+![Teacher TimeTable](https://imgur.com/pJcXVI5.png)
 
 ### Student Page
 
