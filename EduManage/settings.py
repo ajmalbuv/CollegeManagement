@@ -143,7 +143,8 @@ JAZZMIN_SETTINGS = {
     "site_logo": "admin/img/logo.png",
     "copyright": "Ajmal & Asish",
 }
-#
+
+
 JAZZMIN_UI_TWEAKS = {
     "navbar_small_text": False,
     "footer_small_text": False,
