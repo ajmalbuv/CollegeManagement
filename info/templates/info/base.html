@@ -29,18 +29,29 @@
               rel="stylesheet" />
         {% block css %}
         {% endblock css %}
+        <style>
+            .custombgcolor{
+                background-color: #212529 !important;
+            }
+        </style>
     </head>
     <body id="page-top">
-        <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-            <a class="navbar-brand mr-1" href="{% url 'index' %}">EduManage</a>
+        <nav class="navbar navbar-expand navbar-dark bg-dark static-top custombgcolor">
+            <a class="navbar-brand mr-1" href="{% url 'index' %}">
+                <img src="{% static 'info/images/logo.png' %}"
+                     alt="Logo"
+                     height="30"
+                     width=""
+                     class="me-2">
+            EduManage</a>
             <button class="btn btn-link btn-sm text-white order-1 order-sm-0"
                     id="sidebarToggle"
                     href="#">
                 <i class="fas fa-bars"></i>
             </button>
             <!-- Navbar -->
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
+            <div class="collapse navbar-collapse custombgcolor" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto custombgcolor">
                     <li class="nav-item">
                         {% if request.user.is_student %}
                             <a class="nav-link text-capitalize">{{ request.user.student.name }}</a>
