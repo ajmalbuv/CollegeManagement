@@ -1,7 +1,6 @@
-from django.urls import path, include
-import apis.views as api_view
-from django.contrib import admin
+from django.urls import path
 
+import apis.views as api_view
 
 urlpatterns = [
     path("details/", api_view.DetailView.as_view()),

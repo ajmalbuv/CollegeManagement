@@ -1,27 +1,13 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
-from .models import (
-    Dept,
-    Class,
-    Student,
-    Attendance,
-    Course,
-    Teacher,
-    Assign,
-    AttendanceTotal,
-    time_slots,
-    DAYS_OF_WEEK,
-    AssignTime,
-    AttendanceClass,
-    StudentCourse,
-    Marks,
-    MarksClass,
-)
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.utils import timezone
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth import get_user_model
 
+from .models import (DAYS_OF_WEEK, Assign, AssignTime, Attendance,
+                     AttendanceClass, AttendanceTotal, Class, Course, Dept,
+                     MarksClass, Student, StudentCourse, Teacher, time_slots)
 
 User = get_user_model()
 
@@ -58,8 +44,7 @@ def attendance(request, stud_id):
 def attendance_detail(request, stud_id, course_id):
     stud = get_object_or_404(Student, USN=stud_id)
     cr = get_object_or_404(Course, id=course_id)
-    att_list = Attendance.objects.filter(
-        course=cr, student=stud).order_by("date")
+    att_list = Attendance.objects.filter(course=cr, student=stud).order_by("date")
     return render(request, "info/att_detail.html", {"att_list": att_list, "cr": cr})
 
 
@@ -174,8 +159,7 @@ def confirm(request, ass_c_id):
 def t_attendance_detail(request, stud_id, course_id):
     stud = get_object_or_404(Student, USN=stud_id)
     cr = get_object_or_404(Course, id=course_id)
-    att_list = Attendance.objects.filter(
-        course=cr, student=stud).order_by("date")
+    att_list = Attendance.objects.filter(course=cr, student=stud).order_by("date")
     return render(request, "info/t_att_detail.html", {"att_list": att_list, "cr": cr})
 
 
@@ -399,8 +383,7 @@ def add_teacher(request):
         )
         user.save()
 
-        Teacher(user=user, id=id, dept=dept,
-                name=name, sex=sex, DOB=dob).save()
+        Teacher(user=user, id=id, dept=dept, name=name, sex=sex, DOB=dob).save()
         return redirect("/")
 
     all_dept = Dept.objects.order_by("-id")

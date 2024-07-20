@@ -1,4 +1,5 @@
 import os
+
 import dj_database_url
 from dotenv import load_dotenv
 
@@ -140,7 +141,7 @@ JAZZMIN_SETTINGS = {
     "site_icon": "asishidea.ico",
     "custom_css": "admin/css/jazzmincustom.css",
     "site_logo": "admin/img/logo.png",
-    "copyright": "Ajmal & Asish"
+    "copyright": "Ajmal & Asish",
 }
 #
 JAZZMIN_UI_TWEAKS = {
@@ -171,6 +172,6 @@ JAZZMIN_UI_TWEAKS = {
         "info": "btn-info",
         "warning": "btn-warning",
         "danger": "btn-danger",
-        "success": "btn-success"
-    }
+        "success": "btn-success",
+    },
 }

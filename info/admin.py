@@ -1,21 +1,13 @@
-from datetime import timedelta, datetime
+from datetime import datetime, timedelta
+
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.http import HttpResponseRedirect
 from django.urls import path
 
-from .models import (
-    Dept,
-    Class,
-    Student,
-    Attendance,
-    Course,
-    Teacher,
-    Assign,
-    AssignTime,
-    AttendanceClass,
-)
-from .models import StudentCourse, Marks, User, AttendanceRange
+from .models import (Assign, AssignTime, Attendance, AttendanceClass,
+                     AttendanceRange, Class, Course, Dept, Marks, Student,
+                     StudentCourse, Teacher, User)
 
 # Register your models here.
 
@@ -123,14 +115,13 @@ class AttendanceClassAdmin(admin.ModelAdmin):
     list_display = ("assign", "date", "status")
     ordering = ["assign", "date"]
     change_list_template = "admin/attendance/attendance_change_list.html"
-    
+
     def changelist_view(self, request, extra_context=None):
         extra_context = extra_context or {}
         try:
-            extra_context['current_range'] = AttendanceRange.objects.latest(
-                'id')
+            extra_context["current_range"] = AttendanceRange.objects.latest("id")
         except AttendanceRange.DoesNotExist:
-            extra_context['current_range'] = None
+            extra_context["current_range"] = None
         return super().changelist_view(request, extra_context=extra_context)
 
     def get_urls(self):
@@ -142,10 +133,8 @@ class AttendanceClassAdmin(admin.ModelAdmin):
 
     def reset_attd(self, request):
 
-        start_date = datetime.strptime(
-            request.POST["startdate"], "%Y-%m-%d").date()
-        end_date = datetime.strptime(
-            request.POST["enddate"], "%Y-%m-%d").date()
+        start_date = datetime.strptime(request.POST["startdate"], "%Y-%m-%d").date()
+        end_date = datetime.strptime(request.POST["enddate"], "%Y-%m-%d").date()
 
         try:
             a = AttendanceRange.objects.all()[:1].get()
@@ -184,4 +173,3 @@ admin.site.register(Teacher, TeacherAdmin)
 admin.site.register(Assign, AssignAdmin)
 admin.site.register(StudentCourse, StudentCourseAdmin)
 admin.site.register(AttendanceClass, AttendanceClassAdmin)
-
