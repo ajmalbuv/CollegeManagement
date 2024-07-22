@@ -29,8 +29,42 @@
                                 <td>{{ sc.student_id }}</td>
                                 <td>
                                     <b>{{ sc.student.name }} </b>
+                                </td>                                
+                                <td>
+                                    {% for m in sc.marks_set.all %}
+                                    {% if m.name == "Internal test 1" %}
+                                        {{ m.marks1 }}
+                                        {% endif %}
+                                        {% endfor %}
                                 </td>
-                                {% for m in sc.marks_set.all %}<td>{{ m.marks1 }}</td>{% endfor %}
+                                <td> 
+                                    {% for m in sc.marks_set.all %}                                   
+                                    {% if m.name == "Internal test 2" %}
+                                    {{ m.marks1 }}
+                                    {% endif %}
+                                {% endfor %}
+                                </td>
+                                <td>
+                                    {% for m in sc.marks_set.all %} 
+                                    {% if m.name == "Assignment 1" %}
+                                    {{ m.marks1 }}
+                                    {% endif %}
+                                {% endfor %}
+                                </td>
+                                <td>
+                                    {% for m in sc.marks_set.all %} 
+                                    {% if m.name == "Assignment 2" %}
+                                    {{ m.marks1 }}
+                                    {% endif %}
+                                {% endfor %}
+                                </td>   
+                                <td>
+                                    {% for m in sc.marks_set.all %} 
+                                    {% if m.name == "Semester End Exam" %}
+                                    {{ m.marks1 }}
+                                    {% endif %}
+                                {% endfor %}
+                                </td>
                             </tr>
                         {% empty %}
                             <p>Student has no courses</p>
