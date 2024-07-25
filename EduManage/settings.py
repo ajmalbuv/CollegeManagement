@@ -142,6 +142,17 @@ JAZZMIN_SETTINGS = {
     "custom_css": "admin/css/jazzmincustom.css",
     "site_logo": "admin/img/logo.png",
     "copyright": "Ajmal & Asish",
+    "icons": {
+        "info.assign": "fas fa-users-cog",
+        "info.attendanceclass": "fas fa-check-square",
+        "info.class": "fas fa-chalkboard",
+        "info.course": "fas fa-book-open",
+        "info.dept": "fas fa-school",
+        "info.studentcourse": "fas fa-clipboard-list",
+        "info.student": "fas fa-user-graduate",
+        "info.teacher": "fas fa-chalkboard-teacher",
+        "info.user": "fas fa-user",
+    },
 }
 
 
