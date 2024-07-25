@@ -5,3 +5,14 @@
 .recent-actions-module {
     display: none !important
 }
+#recent-actions-module {
+    display: none;
+}
+
+.navbar-dark {
+    background-color: #212529 !important;
+}
+
+.sidebar-dark-primary {
+    background-color: #212529 !important;
+}
