@@ -23,7 +23,7 @@
                             <th>Internals 2</th>
                             <th>Assignment 1</th>
                             <th>Assignment 2</th>
-                            <th>SEE</th>
+                            <th>SEE-Final</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -31,7 +31,31 @@
                             <tr>
                                 <td>{{ sc.course_id }}</td>
                                 <td>{{ sc.course.name }}</td>
-                                {% for m in sc.marks_set.all %}<td>{{ m.marks1 }}</td>{% endfor %}
+                                <td>
+                                    {% for m in sc.marks_set.all %}
+                                        {% if m.name == "Internal test 1" %}{{ m.marks1 }}{% endif %}
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    {% for m in sc.marks_set.all %}
+                                        {% if m.name == "Internal test 2" %}{{ m.marks1 }}{% endif %}
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    {% for m in sc.marks_set.all %}
+                                        {% if m.name == "Assignment 1" %}{{ m.marks1 }}{% endif %}
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    {% for m in sc.marks_set.all %}
+                                        {% if m.name == "Assignment 2" %}{{ m.marks1 }}{% endif %}
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    {% for m in sc.marks_set.all %}
+                                        {% if m.name == "Semester End Exam" %}{{ m.marks1 }}{% endif %}
+                                    {% endfor %}
+                                </td>
                             </tr>
                         {% empty %}
                             <p>Student has no courses</p>

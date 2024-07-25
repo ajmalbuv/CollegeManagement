@@ -2,53 +2,58 @@
 {% block title %}
     TimeTable
 {% endblock title %}
+{% load static %}
 {% block content %}
-    <div class="container">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h2 class="text-center">Timetable</h2>
-                </div>
-                <div id="no-more-tables">
-                    <table class="col-sm-12 table table-bordered table-striped table-condensed cf">
-                        <thead class="cf">
+    <div class="card">
+        <div class="card-header">
+            <h2 class="text-center">
+                <i class="fas fa-calendar-days"></i>
+                Timetable
+            </h2>
+        </div>
+        <div id="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-condenced"
+                       display="fixed"
+                       width="100%"
+                       cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>8:30 - 9:45</th>
+                            <th>9:45 - 10:45</th>
+                            <th>Break</th>
+                            <th>11:10 - 12:10</th>
+                            <th>12:10 - 1:10</th>
+                            <th>Lunch</th>
+                            <th>1:50 - 2:40</th>
+                            <th>2:40 - 3:30</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in matrix %}
                             <tr>
-                                <th></th>
-                                <th>8:30 - 9:45</th>
-                                <th>9:45 - 10:45</th>
-                                <th>Break</th>
-                                <th>11:10 - 12:10</th>
-                                <th>12:10 - 1:10</th>
-                                <th>Lunch</th>
-                                <th>1:50 - 2:40</th>
-                                <th>2:40 - 3:30</th>
+                                {% for j in i %}
+                                    {% if forloop.counter == 1 %}
+                                        <td>
+                                            <b>{{ j }}</b>
+                                        </td>
+                                    {% else %}
+                                        <td>
+                                            {% if j.assign.course_id and j.assign.course.shortname %}
+                                                {{ j.assign.course_id }}-{{ j.assign.course.shortname }}
+                                            {% elif j.assign.course_id %}
+                                                {{ j.assign.course_id }}
+                                            {% elif j.assign.course.shortname %}
+                                                {{ j.assign.course.shortname }}
+                                            {% endif %}
+                                        </td>
+                                    {% endif %}
+                                {% endfor %}
                             </tr>
-                        </thead>
-                        <tbody>
-                            {% for i in matrix %}
-                                <tr>
-                                    {% for j in i %}
-                                        {% if forloop.counter == 1 %}
-                                            <td>
-                                                <b>{{ j }}</b>
-                                            </td>
-                                        {% else %}
-                                            <td>
-                                                {% if j.assign.course_id and j.assign.course.shortname %}
-                                                    {{ j.assign.course_id }}-{{ j.assign.course.shortname }}
-                                                {% elif j.assign.course_id %}
-                                                    {{ j.assign.course_id }}
-                                                {% elif j.assign.course.shortname %}
-                                                    {{ j.assign.course.shortname }}
-                                                {% endif %}
-                                            </td>
-                                        {% endif %}
-                                    {% endfor %}
-                                </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
