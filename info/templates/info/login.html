@@ -13,6 +13,9 @@
         <!-- Bootstrap 5 CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
               rel="stylesheet">
+        <!-- FontAwesome for icons -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+              rel="stylesheet">
         <style>
         .py-4 {
             padding-top: 1rem !important;
@@ -32,11 +35,14 @@
     </head>
     <body>
         <header class="bg-dark text-white py-4 mb-4">
-            <h1 class="display-4 text-center"><img src="{% static 'info/images/logo.png' %}"
-                         alt="Logo"
-                         height="75px"
-                         width=""
-                         class="me-2">EduManage</h1>
+            <h1 class="display-4 text-center">
+                <img src="{% static 'info/images/logo.png' %}"
+                     alt="Logo"
+                     height="75px"
+                     width=""
+                     class="me-2">
+                EduManage
+            </h1>
         </header>
         <br />
         <div class="container">
@@ -57,12 +63,28 @@
                                 {% for field in form %}
                                     <div class="mb-3">
                                         {% if field.errors %}<div class="alert alert-danger py-2" role="alert">{{ field.errors }}</div>{% endif %}
-                                        <input type="{{ field.field.widget.input_type }}"
-                                               name="{{ field.name }}"
-                                               class="form-control {% if field.errors %}is-invalid{% endif %}"
-                                               placeholder="{{ field.label }}"
-                                               autocomplete="{% if field.name == 'username' %}username{% elif field.name == 'password' %}current-password{% endif %}"
-                                               {% if field.field.required %}required{% endif %}>
+                                        {% if field.name == 'password' %}
+                                            <div class="input-group">
+                                                <input type="{{ field.field.widget.input_type }}"
+                                                       name="{{ field.name }}"
+                                                       id="{{ field.name }}"
+                                                       class="form-control {% if field.errors %}is-invalid{% endif %}"
+                                                       placeholder="{{ field.label }}"
+                                                       autocomplete="current-password"
+                                                       {% if field.field.required %}required{% endif %}>
+                                                <span class="input-group-text" id="togglePassword">
+                                                    <i class="fas fa-eye"></i>
+                                                </span>
+                                            </div>
+                                        {% else %}
+                                            <input type="{{ field.field.widget.input_type }}"
+                                                   name="{{ field.name }}"
+                                                   id="{{ field.name }}"
+                                                   class="form-control {% if field.errors %}is-invalid{% endif %}"
+                                                   placeholder="{{ field.label }}"
+                                                   autocomplete="username"
+                                                   {% if field.field.required %}required{% endif %}>
+                                        {% endif %}
                                     </div>
                                 {% endfor %}
                                 <div class="d-grid">
@@ -74,6 +96,21 @@
                 </div>
             </div>
         </div>
+        <script>
+        document.getElementById('togglePassword').addEventListener('click', function () {
+            var passwordField = document.getElementById('password');
+            var icon = this.querySelector('i');
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                passwordField.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        });
+        </script>
         <!-- Bootstrap 5 JS Bundle with Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     </body>
