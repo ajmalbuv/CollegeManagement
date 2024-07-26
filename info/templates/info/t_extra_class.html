@@ -4,7 +4,7 @@
         <form action="{% url 'e_confirm' ass.id %}" method="post">
             {% csrf_token %}
             <label for="date">Enter Date:</label>
-            <input type="date" name="date">
+            <input type="date" name="date" required>
             <div class="card mb-3">
                 <div class="card-header">
                     <i class="fas fa-table"></i>
@@ -60,3 +60,14 @@
         <p>No students in Class</p>
     {% endif %}
 {% endblock content %}
+{% block scripts %}
+    <script>
+    document.querySelector('form').addEventListener('submit', function(e) {
+    var dateInput = document.querySelector('input[type="date"]');
+    if (!dateInput.value) {
+        e.preventDefault();
+        alert('Please select a date before submitting.');
+        }
+    });
+    </script>
+{% endblock scripts %}

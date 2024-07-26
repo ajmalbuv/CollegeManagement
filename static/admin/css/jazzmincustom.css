@@ -7,7 +7,7 @@
 }
 
 #recent-actions-module {
-    display: none;
+    display: none !important;
 }
 
 .navbar-dark {
