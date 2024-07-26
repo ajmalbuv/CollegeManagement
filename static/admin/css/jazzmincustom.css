@@ -5,6 +5,7 @@
 .recent-actions-module {
     display: none !important
 }
+
 #recent-actions-module {
     display: none;
 }
@@ -15,4 +16,11 @@
 
 .sidebar-dark-primary {
     background-color: #212529 !important;
+}
+.main-footer {
+    color: #212529 !important;
+}
+
+footer.main-footer .float-right {
+    display: none !important;
 }
