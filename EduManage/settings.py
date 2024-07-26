@@ -153,6 +153,7 @@ JAZZMIN_SETTINGS = {
         "info.teacher": "fas fa-chalkboard-teacher",
         "info.user": "fas fa-user",
     },
+    "changeform_format": "single"
 }
 
 
