@@ -35,11 +35,18 @@
             .sidebar {
                 min-height: auto !important;
                 height: auto !important;
-            }       
+            }
+            .fixed-top {
+                position: fixed;
+                top: 0;
+                right: 0;
+                left: 0;
+                z-index: 1030;
+            }                  
     
             #wrapper {
                 display: flex;
-                min-height: calc(100vh - 59px) !important;
+                min-height:100vh !important;
             }
     
             #content-wrapper {
@@ -49,7 +56,7 @@
         </style>
     </head>
     <body id="page-top">
-        <nav class="navbar navbar-expand navbar-dark bg-dark static-top custombgcolor">
+        <nav class="navbar navbar-expand navbar-dark bg-dark fixed-top custombgcolor">
             <a class="navbar-brand mr-1" href="{% url 'index' %}">
                 <img src="{% static 'info/images/logo.png' %}"
                      alt="Logo"
