@@ -1,4 +1,7 @@
 {% extends "info/base.html" %}
+{% block title %}
+    Enter Marks
+{% endblock title %}
 {% block content %}
     {% if c.student_set.all %}
         <form action="{% url 'marks_confirm' mc.id %}" method="post">
@@ -6,7 +9,7 @@
             <div class="card mb-3">
                 <div class="card-header">
                     <i class="fas fa-table"></i>
-                    <b>{{ dept1.name }}</b>
+                    <b>{{ c }}</b>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
