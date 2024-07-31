@@ -45,7 +45,7 @@ You can access the django admin page at **http://127.0.0.1:8000/admin** and logi
 ## Users
 
 New students and teachers can be added through the admin page. A new user needs to be created for each.
-Default password for the teachers and students will be 'project123' if created through this new Quick Add buttons.
+Default password for the teachers and students will be 'project123'.
 
 The admin page is used to modify all tables such as Students, Teachers, Departments, Courses, Classes etc.
 
