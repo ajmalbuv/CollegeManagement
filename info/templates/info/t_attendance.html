@@ -1,4 +1,7 @@
 {% extends "info/base.html" %}
+{% block title %}
+    Mark Attendance
+{% endblock title %}
 {% block content %}
     {% if c.student_set.all %}
         <form action="{% url 'confirm' assc.id %}" method="post">

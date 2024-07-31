@@ -1,4 +1,7 @@
 {% extends "info/base.html" %}
+{% block title %}
+    Edit Attendance
+{% endblock title %}
 {% block content %}
     <form action="{% url 'confirm' assc.id %}" method="post">
         {% csrf_token %}

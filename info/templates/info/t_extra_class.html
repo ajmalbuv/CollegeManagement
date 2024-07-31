@@ -1,4 +1,7 @@
 {% extends "info/base.html" %}
+{% block title %}
+    Extra Class
+{% endblock title %}
 {% block content %}
     {% if c.student_set.all %}
         <form action="{% url 'e_confirm' ass.id %}" method="post">

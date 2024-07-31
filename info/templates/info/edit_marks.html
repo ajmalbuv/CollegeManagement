@@ -1,4 +1,7 @@
 {% extends "info/base.html" %}
+{% block title %}
+    Edit Marks
+{% endblock title %}
 {% block content %}
     <form action="{% url 'marks_confirm' mc.id %}" method="post">
         {% csrf_token %}
