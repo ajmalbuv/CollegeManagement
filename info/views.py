@@ -5,9 +5,22 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.utils import timezone
 
-from .models import (DAYS_OF_WEEK, Assign, AssignTime, Attendance,
-                     AttendanceClass, AttendanceTotal, Class, Course, Dept,
-                     MarksClass, Student, StudentCourse, Teacher, time_slots)
+from .models import (
+    DAYS_OF_WEEK,
+    Assign,
+    AssignTime,
+    Attendance,
+    AttendanceClass,
+    AttendanceTotal,
+    Class,
+    Course,
+    Dept,
+    MarksClass,
+    Student,
+    StudentCourse,
+    Teacher,
+    time_slots,
+)
 
 User = get_user_model()
 
@@ -21,7 +34,7 @@ def index(request):
     if request.user.is_student:
         return render(request, "info/homepage.html")
     if request.user.is_superuser:
-        return render(request, "info/admin_page.html")
+        return redirect("/admin/")
     return render(request, "info/logout.html")
 
 

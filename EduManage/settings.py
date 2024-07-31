@@ -153,13 +153,28 @@ JAZZMIN_SETTINGS = {
         "info.teacher": "fas fa-chalkboard-teacher",
         "info.user": "fas fa-user",
     },
-    "changeform_format": "single"
+    "changeform_format": "single",
+    "custom_links": {
+        "info": [
+            {
+                "name": "Quick Add Teachers",
+                "url": "add_teacher",
+                "icon": "fa fa-user-plus",
+            },
+            {
+                "name": "Quick Add Students",
+                "url": "add_student",
+                "icon": "fas fa-user-plus",
+            },
+        ]
+    },
+    "hide_models": ["info.studentcourse"],
 }
 
 
 JAZZMIN_UI_TWEAKS = {
     "navbar_small_text": False,
-    "footer_small_text": False,
+    "footer_small_text": True,
     "body_small_text": False,
     "brand_small_text": False,
     "brand_colour": "navbar-dark",
@@ -169,7 +184,7 @@ JAZZMIN_UI_TWEAKS = {
     "navbar_fixed": True,
     "layout_boxed": False,
     "footer_fixed": False,
-    "sidebar_fixed": False,
+    "sidebar_fixed": True,
     "sidebar": "sidebar-dark-primary",
     "sidebar_nav_small_text": False,
     "sidebar_disable_expand": True,
