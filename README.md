@@ -13,7 +13,22 @@ pip install -r requirements.txt
 ## Usage
 
 Go to the College-ERP folder and add a Postgres url in .env or uncomment the sqlite database lines for local db.
-then Run server
+
+### Example .env
+
+```
+SECRET_KEY ="##################################################" #generate a JWT Secret Online
+DEBUG = "True" # Keep False in deployment,True Only in develepment
+POSTGRES_URL_NO_SSL="postgres://username:password@HOSTIP:5432/DBName"
+```
+
+### create SuperUser
+
+```bash
+python manage.py createsuperuser
+```
+
+### Run Server
 
 ```bash
 python manage.py runserver
@@ -23,24 +38,14 @@ Then go to the browser and enter the url **http://127.0.0.1:8000/**
 
 ## Login
 
-The login page is common for students and teachers.  
-The username is their name and password for everyone is 'project123'.
-
-Example usernames:  
-student- 'U19CU21S0002'  
-teacher- 'veena'
+The login page is common for students, teachers and Admins.
 
 You can access the django admin page at **http://127.0.0.1:8000/admin** and login with username 'admin' and the above password.
-
-Also a new admin user can be created using
-
-```bash
-python manage.py createsuperuser
-```
 
 ## Users
 
 New students and teachers can be added through the admin page. A new user needs to be created for each.
+Default password for the teachers and students will be 'project123' if created through this new Quick Add buttons.
 
 The admin page is used to modify all tables such as Students, Teachers, Departments, Courses, Classes etc.
 
@@ -61,7 +66,9 @@ This will delete all present attendance data and create new attendance objects f
 ## Screenshots
 
 ### Login Screen
+
 ![Login Screen](https://imgur.com/WHXZ7hm.png)
+
 ### Teacher Page
 
 ![Teacher DashBoard](https://imgur.com/lhRQnnE.png)
