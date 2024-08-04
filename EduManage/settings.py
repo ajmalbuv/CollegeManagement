@@ -154,6 +154,7 @@ JAZZMIN_SETTINGS = {
         "info.user": "fas fa-user",
     },
     "changeform_format": "single",
+    "welcome_sign": "Welcome to EduManage Admin Dashboard",
     "custom_links": {
         "info": [
             {
