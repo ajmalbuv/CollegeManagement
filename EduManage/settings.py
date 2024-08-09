@@ -170,6 +170,7 @@ JAZZMIN_SETTINGS = {
         ]
     },
     "hide_models": ["info.studentcourse"],
+    "site_logo_classes": "img-fluid",
 }
 
 
