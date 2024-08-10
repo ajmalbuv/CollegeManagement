@@ -3,6 +3,39 @@
     TimeTable
 {% endblock title %}
 {% load static %}
+{% block css %}
+    {{ block.super }}
+    <style>
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      .card,
+      .card * {
+        visibility: visible;
+      }
+      .card {
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+      .card-footer {
+        display: none;
+      }
+      .navbar,
+      .sidebar {
+        display: none !important;
+      }
+      #content-wrapper {
+        margin-left: 0 !important;
+        width: 100% !important;
+      }
+      .container-fluid {
+        padding: 0 !important;
+      }
+    }
+    </style>
+{% endblock css %}
 {% block content %}
     <div class="card mb-3">
         <div class="card-header">
@@ -57,5 +90,19 @@
                 </table>
             </div>
         </div>
+    <div class="card-footer">
+        <button id="printButton" class="btn btn-primary mb-3">
+            <i class="fa fa-print"></i> Print Timetable
+        </button>
     </div>
+    
+</div>
 {% endblock content %}
+{% block scripts %}
+  {{ block.super }}
+  <script>
+    document.getElementById('printButton').addEventListener('click', function () {
+      window.print()
+    })
+  </script>
+{% endblock scripts %}
