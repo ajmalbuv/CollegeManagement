@@ -1,11 +1,11 @@
 {% extends "info/base.html" %}
 {% block title %}
-  TimeTable
+    TimeTable
 {% endblock title %}
 {% load static %}
 {% block css %}
-  {{ block.super }}
-  <style>
+    {{ block.super }}
+    <style>
     @media print {
       body * {
         visibility: hidden;
@@ -37,75 +37,75 @@
         padding: 0 !important;
       }
     }
-  </style>
+    </style>
 {% endblock css %}
 {% block content %}
-  <div class="card">
-    <div class="card-header">
-      <h2 class="text-center">
-        <i class="fa fa-calendar-days"></i>
-        Timetable for {{ request.user.teacher.name }}
-      </h2>
+    <div class="card">
+        <div class="card-header">
+            <h2 class="text-center">
+                <i class="fa fa-calendar-days"></i>
+                Timetable for {{ request.user.teacher.name }}
+            </h2>
+        </div>
+        <div id="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped"
+                       id="dataTable"
+                       width="100%"
+                       cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>8:30 - 9:45</th>
+                            <th>9:45 - 10:45</th>
+                            <th>Break</th>
+                            <th>11:10 - 12:10</th>
+                            <th>12:10 - 1:10</th>
+                            <th>Lunch</th>
+                            <th>1:50 - 2:40</th>
+                            <th>2:40 - 3:30</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in class_matrix %}
+                            <tr>
+                                {% for j in i %}
+                                    {% if forloop.counter == 1 %}
+                                        <td>
+                                            <b>{{ j }}</b>
+                                        </td>
+                                    {% elif j == True %}
+                                        <td></td>
+                                    {% else %}
+                                        <td>
+                                            {% if j.assign.class_id_id and j.assign.course.shortname %}
+                                                {{ j.assign.class_id_id }}-{{ j.assign.course.shortname }}
+                                            {% elif j.assign.class_id_id %}
+                                                {{ j.assign.class_id_id }}
+                                            {% elif j.assign.course.shortname %}
+                                                {{ j.assign.course.shortname }}
+                                            {% endif %}
+                                        </td>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card-footer justify-content-center d-flex">
+            <button id="printButton" class="btn btn-primary">
+                <i class="fa fa-print"></i> Print Timetable
+            </button>
+        </div>
     </div>
-    <div id="card-body">
-      <div class="table-responsive">
-        <table class="table table-bordered table-striped"
-               id="dataTable"
-               width="100%"
-               cellspacing="0">
-          <thead>
-            <tr>
-              <th></th>
-              <th>8:30 - 9:45</th>
-              <th>9:45 - 10:45</th>
-              <th>Break</th>
-              <th>11:10 - 12:10</th>
-              <th>12:10 - 1:10</th>
-              <th>Lunch</th>
-              <th>1:50 - 2:40</th>
-              <th>2:40 - 3:30</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for i in class_matrix %}
-              <tr>
-                {% for j in i %}
-                  {% if forloop.counter == 1 %}
-                    <td>
-                      <b>{{ j }}</b>
-                    </td>
-                  {% elif j == True %}
-                    <td></td>
-                  {% else %}
-                    <td>
-                      {% if j.assign.class_id_id and j.assign.course.shortname %}
-                        {{ j.assign.class_id_id }}-{{ j.assign.course.shortname }}
-                      {% elif j.assign.class_id_id %}
-                        {{ j.assign.class_id_id }}
-                      {% elif j.assign.course.shortname %}
-                        {{ j.assign.course.shortname }}
-                      {% endif %}
-                    </td>
-                  {% endif %}
-                {% endfor %}
-              </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <div class="card-footer justify-content-center d-flex">
-      <button id="printButton" class="btn btn-primary">
-        <i class="fa fa-print"></i> Print Timetable
-      </button>
-    </div>
-  </div>
 {% endblock content %}
 {% block scripts %}
-  {{ block.super }}
-  <script>
+    {{ block.super }}
+    <script>
     document.getElementById('printButton').addEventListener('click', function () {
       window.print()
     })
-  </script>
+    </script>
 {% endblock scripts %}
