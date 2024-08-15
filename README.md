@@ -1,6 +1,6 @@
-# College Management System
+# EduManage 
 
-A college management system built using Django framework. It is designed for interactions between students and teachers. Features include attendance, marks and time table.
+A college management system built using **Django** framework. It is designed for interactions between students and teachers. Features include attendance, marks and time table.
 
 ## Installation
 
@@ -12,7 +12,7 @@ pip install -r requirements.txt
 
 ## Usage
 
-Go to the College-ERP folder and add a Postgres url in .env or uncomment the sqlite database lines for local db.
+Go to the EduManage folder and add a Postgres url in .env or uncomment the sqlite database lines for local db.
 
 ### Example .env
 
@@ -40,14 +40,14 @@ Then go to the browser and enter the url **http://127.0.0.1:8000/**
 
 The login page is common for students, teachers and Admins.
 
-You can access the django admin page at **http://127.0.0.1:8000/admin** and login with username 'admin' and the above password.
+You can access the django admin page by logging in using the superuser username and password.
 
 ## Users
 
 New students and teachers can be added through the admin page. A new user needs to be created for each.
 Default password for the teachers and students will be 'project123'.
 
-The admin page is used to modify all tables such as Students, Teachers, Departments, Courses, Classes etc.
+The admin page is used to modify all models such as Students, Teachers, Departments, Courses, Classes etc.
 
 **For more details regarding the system and features please refer the reports included.**
 
@@ -85,20 +85,22 @@ This will delete all present attendance data and create new attendance objects f
 
 ### Student Page
 
-![alt text](https://imgur.com/isL9cjz.png)
+![Student Dashboard](https://imgur.com/219KXjZ.png)
 
-![alt text](https://imgur.com/5pzl7m3.png)
+![Student Attendancet](https://imgur.com/lv9V7gP.png)
 
-![alt text](https://imgur.com/7zWhHZx.png)
+![Student Attendance Detail](https://imgur.com/ygo5d8U.png)
 
-![alt text](https://imgur.com/fu7gxk8.png)
+![Student Markst](https://imgur.com/BLhUmp4.png)
 
-![alt text](https://imgur.com/NZqU268.png)
+![Student Timetable](https://imgur.com/FczljbU.png)
 
 ### Admin Page
 
-![alt text](https://imgur.com/sDvDc9N.png)
+![Admin Dashboard](https://imgur.com/nRobbTj.png)
 
-![alt text](https://imgur.com/tMKWx6f.png)
+![Assigns](https://imgur.com/MzILYWA.png)
 
-![alt text](https://imgur.com/PvCsNeB.png)
+![Add Teacher](https://imgur.com/7vDvgim.png)
+
+![Add Student](https://imgur.com/psox5xA.png)
