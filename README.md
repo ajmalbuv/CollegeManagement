@@ -1,4 +1,8 @@
 # EduManage 
+[//]:![EduManage-Logo](Logo-Official.png)
+<div align="center">
+  <img src="Logo-Official.png" alt="Project Logo" width="200" />
+</div>
 
 A college management system built using **Django** framework. It is designed for interactions between students and teachers. Features include attendance, marks and time table.
 
