@@ -1,5 +1,4 @@
 import os
-
 import dj_database_url
 from dotenv import load_dotenv
 
@@ -188,7 +187,7 @@ JAZZMIN_UI_TWEAKS = {
     "footer_fixed": False,
     "sidebar_fixed": True,
     "sidebar": "sidebar-dark-primary",
-    "sidebar_nav_small_text": True,
+    "sidebar_nav_small_text": False,
     "sidebar_disable_expand": True,
     "sidebar_nav_child_indent": False,
     "sidebar_nav_compact_style": False,
